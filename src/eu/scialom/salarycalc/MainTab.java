@@ -36,7 +36,7 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 			this.name.setMinimumWidth(this.pixelWidthFromPerCent(20));
 			this.addView(this.name);
 			this.value = new EditText(context);
-			this.value.setInputType(InputType.TYPE_CLASS_NUMBER);
+			this.value.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 			this.value.setText(defaultValue);
 			this.value.setMinimumWidth(this.pixelWidthFromPerCent(60));
 			this.addView(this.value);
