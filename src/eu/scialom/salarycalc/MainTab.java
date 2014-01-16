@@ -62,7 +62,7 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 
 		this.setOrientation(LinearLayout.VERTICAL);
 		this.formats = new Vector<Format>();
-		this.formats.add(new Format(this.getContext(), "Annual (BT):", "14400", this));
+		this.formats.add(new Format(this.getContext(), "Annual (BT):", "", this));
 		this.formats.add(new Format(this.getContext(), "Annual (AT):", "", this));
 		this.formats.add(new Format(this.getContext(), "Monthly (BT):", "", this));
 		this.formats.add(new Format(this.getContext(), "Monthly (AT):", "", this));
