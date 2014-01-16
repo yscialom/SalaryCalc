@@ -36,7 +36,8 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 			this.name.setMinimumWidth(this.pixelWidthFromPerCent(20));
 			this.addView(this.name);
 			this.value = new EditText(context);
-			this.value.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+			this.value.setInputType(InputType.TYPE_CLASS_NUMBER
+				| InputType.TYPE_NUMBER_FLAG_DECIMAL);
 			this.value.setText(defaultValue);
 			this.value.setMinimumWidth(this.pixelWidthFromPerCent(60));
 			this.addView(this.value);
@@ -53,12 +54,17 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 	}
 
 	private final Vector<Format> formats;
+	private final Button reset;
 	public Calculator calc;
 
 	public MainTab(Context context) {
 		super(context);
 
 		this.calc = new Calculator();
+
+		this.reset = new Button(this.getContext());
+		this.reset.setText("Reset");
+		this.reset.setOnClickListener(this);
 
 		this.setOrientation(LinearLayout.VERTICAL);
 		this.formats = new Vector<Format>();
@@ -87,11 +93,22 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 		int position = -1;
 		float value = 0f;
 
+		// Special case: clicked on reset?
+		if (this.reset == v) {
+			for (final Format f : this.formats)
+				f.value.setText("");
+			return;
+		}
+
 		// Find input format
 		for (final Format f : this.formats)
 			if (f.submit == v) {
 				position = this.formats.indexOf(f);
-				value = Float.valueOf(f.value.getText().toString());
+				try {
+					value = Float.valueOf(f.value.getText().toString());
+				} catch (final NumberFormatException e) {
+					value = 0f;
+				}
 			}
 
 		// Update Calculator base
@@ -129,6 +146,7 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 		this.removeAllViews();
 		for (final Format f : this.formats)
 			this.addView(f);
+		this.addView(this.reset);
 	}
 
 }
