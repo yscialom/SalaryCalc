@@ -51,6 +51,10 @@ public class Calculator {
 		this.AnnualBT = value;
 	}
 
+	public void setHourlyAT(float value) {
+		this.setMonthlyAT((int) (value * this.settings.weeksPerMonth * this.settings.hourPerWeek));
+	}
+
 	public void setHourlyBT(float value) {
 		this.setMonthlyBT((int) (value * this.settings.weeksPerMonth * this.settings.hourPerWeek));
 	}
