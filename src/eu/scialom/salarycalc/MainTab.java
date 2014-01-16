@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 
@@ -54,9 +53,12 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 	}
 
 	private final Vector<Format> formats;
+	public Calculator calc;
 
 	public MainTab(Context context) {
 		super(context);
+
+		this.calc = new Calculator();
 
 		this.setOrientation(LinearLayout.VERTICAL);
 		this.formats = new Vector<Format>();
@@ -82,7 +84,45 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Toast.makeText(this.getContext(), " ~~ LOL ~~ ", Toast.LENGTH_LONG).show();
+		int position = -1;
+		float value = 0f;
+
+		// Find input format
+		for (final Format f : this.formats)
+			if (f.submit == v) {
+				position = this.formats.indexOf(f);
+				value = Float.valueOf(f.value.getText().toString());
+			}
+
+		// Update Calculator base
+		switch (position) {
+		case 0:
+			this.calc.setAnnualBT((int) value);
+			break;
+		case 1:
+			this.calc.setAnnualAT((int) value);
+			break;
+		case 2:
+			this.calc.setMonthlyBT((int) value);
+			break;
+		case 3:
+			this.calc.setMonthlyAT((int) value);
+			break;
+		case 4:
+			this.calc.setHourlyBT(value);
+			break;
+		case 5:
+			this.calc.setHourlyAT(value);
+			break;
+		}
+
+		// Update output formats
+		this.formats.get(0).value.setText(Integer.toString(this.calc.getAnnualBT()));
+		this.formats.get(1).value.setText(Integer.toString(this.calc.getAnnualAT()));
+		this.formats.get(2).value.setText(Integer.toString(this.calc.getMonthlyBT()));
+		this.formats.get(3).value.setText(Integer.toString(this.calc.getMonthlyAT()));
+		this.formats.get(4).value.setText(Float.toString(this.calc.getHourlyBT()));
+		this.formats.get(5).value.setText(Float.toString(this.calc.getHourlyAT()));
 	}
 
 	private void regenUI() {

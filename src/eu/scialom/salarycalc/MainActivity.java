@@ -61,7 +61,6 @@ public class MainActivity extends SherlockActivity implements ActionBar.TabListe
 	}
 
 	private void showTab(int position) {
-		System.out.println("showTab(" + position + ")");
 		for (final MyTab it : this.tabs)
 			it.getView().setVisibility(View.GONE);
 		this.tabs.get(position).getView().setVisibility(View.VISIBLE);

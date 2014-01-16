@@ -8,8 +8,8 @@ public class Calculator {
 		private final float weeksPerMonth = 4.348f;
 	}
 
-	private Settings settings;
-	private int AnnualBT;
+	private final Settings settings = new Settings();
+	private int AnnualBT = 0;
 
 	/* Getters */
 
@@ -34,11 +34,11 @@ public class Calculator {
 	}
 
 	public int getMonthlyAT() {
-		return this.getAnnualAT() * this.settings.monthsPerYear;
+		return this.getAnnualAT() / this.settings.monthsPerYear;
 	}
 
 	public int getMonthlyBT() {
-		return this.AnnualBT * this.settings.monthsPerYear;
+		return this.AnnualBT / this.settings.monthsPerYear;
 	}
 
 	/* Setters */
@@ -60,10 +60,10 @@ public class Calculator {
 	}
 
 	public void setMonthlyAT(int value) {
-		this.setAnnualAT(value / this.settings.monthsPerYear);
+		this.setAnnualAT(value * this.settings.monthsPerYear);
 	}
 
 	public void setMonthlyBT(int value) {
-		this.AnnualBT = value / this.settings.monthsPerYear;
+		this.AnnualBT = value * this.settings.monthsPerYear;
 	}
 }
