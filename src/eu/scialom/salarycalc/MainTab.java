@@ -121,8 +121,8 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 		this.formats.get(1).value.setText(Integer.toString(this.calc.getAnnualAT()));
 		this.formats.get(2).value.setText(Integer.toString(this.calc.getMonthlyBT()));
 		this.formats.get(3).value.setText(Integer.toString(this.calc.getMonthlyAT()));
-		this.formats.get(4).value.setText(Float.toString(this.calc.getHourlyBT()));
-		this.formats.get(5).value.setText(Float.toString(this.calc.getHourlyAT()));
+		this.formats.get(4).value.setText(String.format("%.2f", this.calc.getHourlyBT()));
+		this.formats.get(5).value.setText(String.format("%.2f", this.calc.getHourlyAT()));
 	}
 
 	private void regenUI() {
