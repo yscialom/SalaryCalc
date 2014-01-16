@@ -9,8 +9,8 @@ public class OptionTab extends RelativeLayout implements MyTab {
 
 	public OptionTab(Context context) {
 		super(context);
-		TextView t = new TextView(context);
-		t.setText("Bye!\n" + getShortName());
+		final TextView t = new TextView(context);
+		t.setText("Bye!\n" + this.getShortName());
 		this.addView(t);
 	}
 

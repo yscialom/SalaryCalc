@@ -2,16 +2,18 @@ package eu.scialom.salarycalc;
 
 import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainTab extends RelativeLayout implements MyTab {
+public class MainTab extends RelativeLayout implements MyTab, OnClickListener {
 
 	public MainTab(Context context) {
 		super(context);
-		TextView t = new TextView(context);
-		t.setText("Hello, World!\n" + getShortName());
-		this.addView(t);
+
+		final Form f = new Form(this.getContext());
+		f.addTextField("Annual:", "14400", "Compute", this);
+		this.addView(f);
 	}
 
 	@Override
@@ -22,6 +24,11 @@ public class MainTab extends RelativeLayout implements MyTab {
 	@Override
 	public View getView() {
 		return this;
+	}
+
+	@Override
+	public void onClick(View arg0) {
+		Toast.makeText(this.getContext(), " ~~ LOL ~~ ", Toast.LENGTH_LONG).show();
 	}
 
 }
