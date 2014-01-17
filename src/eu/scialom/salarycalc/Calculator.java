@@ -2,14 +2,10 @@ package eu.scialom.salarycalc;
 
 public class Calculator {
 	public class Settings {
-		private final float taxRate = 0.22f;
+		public float taxRate = 1f - 0.22f;
 		public int hourPerWeek = 35;
 		public int monthsPerYear = 12;
 		private final float weeksPerMonth = 4.348f;
-
-		public float afterTaxRate() {
-			return 1.0f - this.taxRate;
-		}
 	}
 
 	private final Settings settings = new Settings();
@@ -18,7 +14,7 @@ public class Calculator {
 	/* Getters */
 
 	public int getAnnualAT() {
-		return (int) (this.AnnualBT * this.settings.afterTaxRate());
+		return (int) (this.AnnualBT * this.settings.taxRate);
 	}
 
 	public int getAnnualBT() {
@@ -48,7 +44,7 @@ public class Calculator {
 	/* Setters */
 
 	public void setAnnualAT(int value) {
-		this.AnnualBT = (int) (value / this.settings.afterTaxRate());
+		this.AnnualBT = (int) (value / this.settings.taxRate);
 	}
 
 	public void setAnnualBT(int value) {

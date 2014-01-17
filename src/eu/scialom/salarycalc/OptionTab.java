@@ -62,6 +62,7 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 				this.inputInteger(context, adapter);
 				break;
 			case TYPE_FLOAT:
+				this.inputRate(context, adapter);
 				break;
 			}
 		}
@@ -76,7 +77,27 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 				}
 			};
 			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, (Integer) this.value,
-				"title", "OK", "Cancel (back to " + this.value + ")");
+				"Update " + this.name + " value", "OK", "Cancel (back to " + this.value + ")");
+			dialog.getNumberPicker().setRange(1, 24 * 7);
+			dialog.setOnNumberSetListener(listener);
+			dialog.show();
+		}
+
+		private void inputRate(Context c, final Adapter adapter) {
+			final Option self = this;
+			final NumberPickerDialog.OnNumberSetListener listener = new NumberPickerDialog.OnNumberSetListener() {
+				@Override
+				public void onNumberSet(int selectedNumber) {
+					self.value = selectedNumber / 100.0f;
+					adapter.notifyDataSetChanged();
+				}
+			};
+			final int rate = (int) ((Float) this.value * 100.0f);
+			System.out.println("value = " + this.value + "\nvalue*100 = "
+				+ ((Float) this.value * 100.0f) + "\nrate = " + rate);
+			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, rate, "Update "
+				+ this.name + " value", "OK", "Cancel (back to " + rate + "%)");
+			dialog.getNumberPicker().setRange(0, 100);
 			dialog.setOnNumberSetListener(listener);
 			dialog.show();
 		}
@@ -88,7 +109,7 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 		final Option opt[] = new Option[] {
 			new Option("TEXT", "This is a string", Option.TYPE_TEXT, "value"),
 			new Option("INTEGER", "This is an integer", Option.TYPE_INTEGER, 42),
-			new Option("FLOAT", "This is SPARTAAAAA!", Option.TYPE_FLOAT, -42.0f), };
+			new Option("FLOAT", "This is SPARTAAAAA!", Option.TYPE_FLOAT, 0.22f), };
 
 		final Adapter data = new Adapter(context, opt);
 		this.setAdapter(data);
