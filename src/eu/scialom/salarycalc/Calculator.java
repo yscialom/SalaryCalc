@@ -8,7 +8,15 @@ public class Calculator {
 		private final float weeksPerMonth = 4.348f;
 	}
 
-	private final Settings settings = new Settings();
+	private Settings settings = new Settings();
+	public Settings getSettings() {
+		return settings;
+	}
+
+	public void setSettings(Settings settings) {
+		this.settings = settings;
+	}
+
 	private int AnnualBT = 0;
 
 	/* Getters */

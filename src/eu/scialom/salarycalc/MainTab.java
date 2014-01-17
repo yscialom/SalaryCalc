@@ -55,12 +55,12 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 
 	private final Vector<Format> formats;
 	private final Button reset;
-	public Calculator calc;
+	public static Calculator calc;
 
 	public MainTab(Context context) {
 		super(context);
 
-		this.calc = new Calculator();
+		MainTab.calc = new Calculator();
 
 		this.reset = new Button(this.getContext());
 		this.reset.setText("Reset");
@@ -111,35 +111,38 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 				}
 			}
 
+		// Update Calculator settings
+		// this.get
+
 		// Update Calculator base
 		switch (position) {
 		case 0:
-			this.calc.setAnnualBT((int) value);
+			MainTab.calc.setAnnualBT((int) value);
 			break;
 		case 1:
-			this.calc.setAnnualAT((int) value);
+			MainTab.calc.setAnnualAT((int) value);
 			break;
 		case 2:
-			this.calc.setMonthlyBT((int) value);
+			MainTab.calc.setMonthlyBT((int) value);
 			break;
 		case 3:
-			this.calc.setMonthlyAT((int) value);
+			MainTab.calc.setMonthlyAT((int) value);
 			break;
 		case 4:
-			this.calc.setHourlyBT(value);
+			MainTab.calc.setHourlyBT(value);
 			break;
 		case 5:
-			this.calc.setHourlyAT(value);
+			MainTab.calc.setHourlyAT(value);
 			break;
 		}
 
 		// Update output formats
-		this.formats.get(0).value.setText(Integer.toString(this.calc.getAnnualBT()));
-		this.formats.get(1).value.setText(Integer.toString(this.calc.getAnnualAT()));
-		this.formats.get(2).value.setText(Integer.toString(this.calc.getMonthlyBT()));
-		this.formats.get(3).value.setText(Integer.toString(this.calc.getMonthlyAT()));
-		this.formats.get(4).value.setText(String.format("%.2f", this.calc.getHourlyBT()));
-		this.formats.get(5).value.setText(String.format("%.2f", this.calc.getHourlyAT()));
+		this.formats.get(0).value.setText(Integer.toString(MainTab.calc.getAnnualBT()));
+		this.formats.get(1).value.setText(Integer.toString(MainTab.calc.getAnnualAT()));
+		this.formats.get(2).value.setText(Integer.toString(MainTab.calc.getMonthlyBT()));
+		this.formats.get(3).value.setText(Integer.toString(MainTab.calc.getMonthlyAT()));
+		this.formats.get(4).value.setText(String.format("%.2f", MainTab.calc.getHourlyBT()));
+		this.formats.get(5).value.setText(String.format("%.2f", MainTab.calc.getHourlyAT()));
 	}
 
 	private void regenUI() {

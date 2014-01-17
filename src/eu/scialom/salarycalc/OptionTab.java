@@ -12,9 +12,21 @@ import android.widget.TextView;
 
 import com.michaelnovakjr.numberpicker.NumberPickerDialog;
 
+import eu.scialom.salarycalc.Calculator.Settings;
+
 public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 
 	public class Adapter extends ArrayAdapter<Option> {
+		@Override
+		public void notifyDataSetChanged() {
+			super.notifyDataSetChanged();
+			Calculator c = MainTab.calc;
+			Settings s = c.getSettings();
+			s.taxRate = 1.0f - ((Float) this.getItem(0).value / 100.0f);
+			s.hourPerWeek = (Integer) this.getItem(1).value;
+			s.monthsPerYear = (Integer) this.getItem(2).value;
+		}
+
 		private final Context context;
 		private final Option[] values;
 
