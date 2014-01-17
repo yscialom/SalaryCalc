@@ -17,17 +17,8 @@ import eu.scialom.salarycalc.Calculator.Settings;
 public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 
 	public class Adapter extends ArrayAdapter<Option> {
-		@Override
-		public void notifyDataSetChanged() {
-			super.notifyDataSetChanged();
-			Calculator c = MainTab.calc;
-			Settings s = c.getSettings();
-			s.taxRate = 1.0f - ((Float) this.getItem(0).value / 100.0f);
-			s.hourPerWeek = (Integer) this.getItem(1).value;
-			s.monthsPerYear = (Integer) this.getItem(2).value;
-		}
-
 		private final Context context;
+
 		private final Option[] values;
 
 		public Adapter(Context context, Option[] values) {
@@ -40,12 +31,37 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			final LayoutInflater inflater = (LayoutInflater) this.context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			final Option opt = this.values[position];
 			final View rowView = inflater.inflate(R.layout.option_tab_item, parent, false);
 			final TextView name = (TextView) rowView.findViewById(R.id.name);
 			final TextView desc = (TextView) rowView.findViewById(R.id.description);
-			name.setText(this.values[position].name);
-			desc.setText(this.values[position].description);
+			final TextView value = (TextView) rowView.findViewById(R.id.value);
+			name.setText(opt.name);
+			desc.setText(opt.description);
+			switch (opt.type) {
+			case Option.TYPE_TEXT:
+				value.setText((String)opt.value);
+				break;
+			case Option.TYPE_INTEGER:
+				value.setText(Integer.toString((Integer)opt.value));
+				break;
+			case Option.TYPE_FLOAT:
+				Float v = (Float)opt.value;
+				value.setText(String.format("%.0f%%", 100*v));
+				break;
+			}
+
 			return rowView;
+		}
+
+		@Override
+		public void notifyDataSetChanged() {
+			super.notifyDataSetChanged();
+			final Calculator c = MainTab.calc;
+			final Settings s = c.getSettings();
+			s.taxRate = 1.0f - ((Float) this.getItem(0).value / 100.0f);
+			s.hourPerWeek = (Integer) this.getItem(1).value;
+			s.monthsPerYear = (Integer) this.getItem(2).value;
 		}
 	}
 
@@ -105,8 +121,6 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 				}
 			};
 			final int rate = (int) ((Float) this.value * 100.0f);
-			System.out.println("value = " + this.value + "\nvalue*100 = "
-				+ ((Float) this.value * 100.0f) + "\nrate = " + rate);
 			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, rate, "Update "
 				+ this.name + " value", "OK", "Cancel (back to " + rate + "%)");
 			dialog.getNumberPicker().setRange(0, 100);
@@ -119,10 +133,12 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 		super(context);
 
 		final Option opt[] = new Option[] {
-			new Option("Tax rate", "The part of the salary the employee have to pay, in percent.", Option.TYPE_FLOAT, 0.2f),
-			new Option("Hours per week", "The number of hour worked in a typical week.", Option.TYPE_INTEGER, 35),
-			new Option("Months per year", "Number of administrative months the year is split into.", Option.TYPE_INTEGER, 12)
-		};
+			new Option("Tax rate", "The part of the salary the employee have to pay, in percent.",
+				Option.TYPE_FLOAT, 0.2f),
+			new Option("Hours per week", "The number of hour worked in a typical week.",
+				Option.TYPE_INTEGER, 35),
+			new Option("Months per year",
+				"Number of administrative months the year is split into.", Option.TYPE_INTEGER, 12) };
 
 		final Adapter data = new Adapter(context, opt);
 		this.setAdapter(data);

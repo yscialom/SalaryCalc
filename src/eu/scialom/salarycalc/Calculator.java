@@ -9,17 +9,7 @@ public class Calculator {
 	}
 
 	private Settings settings = new Settings();
-	public Settings getSettings() {
-		return settings;
-	}
-
-	public void setSettings(Settings settings) {
-		this.settings = settings;
-	}
-
 	private int AnnualBT = 0;
-
-	/* Getters */
 
 	public int getAnnualAT() {
 		return (int) (this.AnnualBT * this.settings.taxRate);
@@ -28,6 +18,8 @@ public class Calculator {
 	public int getAnnualBT() {
 		return this.AnnualBT;
 	}
+
+	/* Getters */
 
 	public float getHourlyAT() {
 		return this.getMonthlyAT() / (this.settings.weeksPerMonth * this.settings.hourPerWeek);
@@ -49,11 +41,15 @@ public class Calculator {
 		return this.AnnualBT / this.settings.monthsPerYear;
 	}
 
-	/* Setters */
+	public Settings getSettings() {
+		return this.settings;
+	}
 
 	public void setAnnualAT(int value) {
 		this.AnnualBT = (int) (value / this.settings.taxRate);
 	}
+
+	/* Setters */
 
 	public void setAnnualBT(int value) {
 		this.AnnualBT = value;
@@ -73,5 +69,9 @@ public class Calculator {
 
 	public void setMonthlyBT(int value) {
 		this.AnnualBT = value * this.settings.monthsPerYear;
+	}
+
+	public void setSettings(Settings settings) {
+		this.settings = settings;
 	}
 }
