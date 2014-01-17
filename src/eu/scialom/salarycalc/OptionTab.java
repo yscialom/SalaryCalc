@@ -107,9 +107,10 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 		super(context);
 
 		final Option opt[] = new Option[] {
-			new Option("TEXT", "This is a string", Option.TYPE_TEXT, "value"),
-			new Option("INTEGER", "This is an integer", Option.TYPE_INTEGER, 42),
-			new Option("FLOAT", "This is SPARTAAAAA!", Option.TYPE_FLOAT, 0.22f), };
+			new Option("Tax rate", "The part of the salary the employee have to pay, in percent.", Option.TYPE_FLOAT, 0.2f),
+			new Option("Hours per week", "The number of hour worked in a typical week.", Option.TYPE_INTEGER, 35),
+			new Option("Months per year", "Number of administrative months the year is split into.", Option.TYPE_INTEGER, 12)
+		};
 
 		final Adapter data = new Adapter(context, opt);
 		this.setAdapter(data);
