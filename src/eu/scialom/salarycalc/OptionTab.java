@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.michaelnovakjr.numberpicker.NumberPickerDialog;
+
 public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 
 	public class Adapter extends ArrayAdapter<Option> {
@@ -52,6 +54,32 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 			this.value = value;
 		}
 
+		public void input(Context context, Adapter adapter) {
+			switch (this.type) {
+			case TYPE_TEXT:
+				break;
+			case TYPE_INTEGER:
+				this.inputInteger(context, adapter);
+				break;
+			case TYPE_FLOAT:
+				break;
+			}
+		}
+
+		private void inputInteger(Context c, final Adapter adapter) {
+			final Option self = this;
+			final NumberPickerDialog.OnNumberSetListener listener = new NumberPickerDialog.OnNumberSetListener() {
+				@Override
+				public void onNumberSet(int selectedNumber) {
+					self.value = selectedNumber;
+					adapter.notifyDataSetChanged();
+				}
+			};
+			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, (Integer) this.value,
+				"title", "OK", "Cancel (back to " + this.value + ")");
+			dialog.setOnNumberSetListener(listener);
+			dialog.show();
+		}
 	}
 
 	public OptionTab(Context context) {
@@ -79,5 +107,9 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View sender, int position, long lposition) {
+		final Option o = (Option) this.getAdapter().getItem(position);
+		final Context c = this.getContext();
+		final Adapter a = (Adapter) this.getAdapter();
+		o.input(c, a);
 	}
 }
