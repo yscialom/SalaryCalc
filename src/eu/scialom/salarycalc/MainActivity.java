@@ -31,6 +31,7 @@ public class MainActivity extends SherlockActivity implements ActionBar.TabListe
 		this.tabs = new Vector<MyTab>();
 		this.tabs.add(new MainTab(this));
 		this.tabs.add(new OptionTab(this));
+		this.tabs.add(new AboutTab(this));
 
 		this.getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		for (final MyTab it : this.tabs) {
