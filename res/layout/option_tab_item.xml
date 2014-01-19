@@ -16,13 +16,18 @@
 			android:clickable="false"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:layout_weight=".20" />
+			android:layout_weight=".20"
+			android:textSize="15sp" />
 
 		<TextView android:id="@+id/value"
 			android:textIsSelectable="false"
 			android:clickable="false"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:gravity="right"
+			android:layout_marginRight = "10dip"
+			android:textColor="#ffffff"
+			android:textSize="18sp"
 			android:layout_weight=".80" />
 	</LinearLayout>
 
@@ -31,5 +36,7 @@
 		android:textIsSelectable="false"
 		android:clickable="false"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
+		android:layout_height="match_parent"
+		android:textColor="#808080"
+		android:textSize="11sp" />
 </LinearLayout>
