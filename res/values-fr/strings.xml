@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Application -->
+    <string name="app_name">SalaryCalc</string>
+	<string name="app_version">0.1</string>
+	<string name="app_year">2014</string>
+	<string name="app_author">Yankel Scialom</string>
+    
+	<!-- Tabs -->
+    <string name="main_tab">Calculatrice</string>
+    <string name="option_tab">Options</string>
+    <string name="about_tab">À propos</string>
+
+    <!--  Main Tab -->
+    <string name="annual_bt">Annuel brut :</string>
+    <string name="annual_at">Annuel net :</string>
+    <string name="monthly_bt">Mensuel brut :</string>
+    <string name="monthly_at">Mensuel net :</string>
+    <string name="hourly_bt">Horraire brut :</string>
+    <string name="hourly_at">Horraire net :</string>
+    <string name="reset">Remise à zéro</string>
+    
+    <!--  Option Tab -->
+    <string name="tax_rate_name">Charges salariales</string>
+    <string name="tax_rate_desc">Pourcentage des charges salariales.</string>
+    <string name="hours_per_week_name">heures par semaine</string>
+    <string name="hours_per_week_desc">Nombre d\'heures travaillées dans une semaine typique.</string>
+    <string name="months_per_year_name">Nombre de mois par an</string>
+    <string name="months_per_year_desc">Nomrbe de mois administratifs.</string>
+    <string name="ok">Valider</string>
+    <string name="cancel">Annuler (retour à %1$d)</string><!-- rate -->
+    
+    <!--  About Tab -->
+    <string name="desc_title">Qu\'est-ce que %1$s ?</string>
+    <string name="desc_text"><![CDATA[
+		<p>%1$s est une application Android conçue pour aider à la conversion d\'une forme à une autre
+		des salaires : annuel brut, mensuel net, à l\'heure, <i>etc</i>.</p>
+
+		<p>%1$s version %2$s, Copyright (C) %3$s %4$s. %1$s est un programme libre, vous pouvez le
+		redistribuer et/ou le modifier selon les termes de la Licence Publique Générale GNU publiée
+		par la Free Software Foundation (version 2 ou bien toute autre version ultérieure choisie
+		par vous).</p>
+
+		<p>Ce programme est distribué car potentiellement utile, mais SANS AUCUNE GARANTIE, ni explicite
+		ni implicite, y compris les garanties de commercialisation ou d\'adaptation dans un but
+		spécifique. Reportez-vous à la <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\">
+		Licence Publique Générale GNU</a> pour plus de détails.</p>
+    ]]></string><!-- 
+    	1: app_name
+    	2: app_version
+    	3: app_year
+    	4: app_author
+	-->
+    
+    <!-- External Credits -->
+    <string name="external_credits_title">Thanks to</string>
+    <string-array name="external_credits_list">
+	    <item><![CDATA[
+	        <a href="http://actionbarsherlock.com">ActionBarSherlock 4.4.0</a>
+	    ]]></item>
+	    <item><![CDATA[
+	    	<a href="https://github.com/michaelnovakjr/numberpicker">NumberPicker</a>
+	   	]]></item>
+	</string-array>
+	
+    <!--  Internal Credits -->
+    <string name="internal_credits_title">Développeurs</string>
+    <string-array name="internal_credits_list">
+	    <item><![CDATA[
+	        Yankel Scialom (YSC) <yankel.scialom@mail.com>
+	    ]]></item>
+	</string-array>
+</resources>

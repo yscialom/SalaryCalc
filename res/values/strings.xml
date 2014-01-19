@@ -29,10 +29,10 @@
     <string name="months_per_year_name">Months per year</string>
     <string name="months_per_year_desc">Number of administrative months the year is split into.</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancel (back to %$1d)</string><!-- rate -->
+    <string name="cancel">Cancel (back to %1$d)</string><!-- rate -->
     
     <!--  About Tab -->
-    <string name="desc_title">What is %s?</string>
+    <string name="desc_title">What is %1$s?</string>
     <string name="desc_text"><![CDATA[
         <p>%1$s is an Android application designed to help you switch from annual wages to monthly or
         hourly wages, before or after taxes, according to configurable settings.</p>

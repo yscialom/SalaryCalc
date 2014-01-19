@@ -23,14 +23,17 @@ public class AboutTab extends ScrollView implements MyTab {
 		Resources res = getResources();
 		
 		// Description
-		TextView desc = (TextView)rowView.findViewById(R.id.desc_text);
+		TextView tTitle= (TextView)rowView.findViewById(R.id.desc_title);
+		TextView tDesc = (TextView)rowView.findViewById(R.id.desc_text);
 		String html = res.getString(R.string.desc_text);
 		String appName = res.getString(R.string.app_name);
 		String appVersion = res.getString(R.string.app_version);
 		String appYear = res.getString(R.string.app_year);
 		String appAuthor = res.getString(R.string.app_author);
-		desc.setText(Html.fromHtml(String.format(html,appName, appVersion, appYear, appAuthor)));
-		desc.setMovementMethod(LinkMovementMethod.getInstance());
+		String title = String.format(res.getString(R.string.desc_title), appName);
+		tTitle.setText(title);
+		tDesc.setText(Html.fromHtml(String.format(html,appName, appVersion, appYear, appAuthor)));
+		tDesc.setMovementMethod(LinkMovementMethod.getInstance());
 
 		// Thanks To
 		String[] externalCredits = res.getStringArray(R.array.external_credits_list);

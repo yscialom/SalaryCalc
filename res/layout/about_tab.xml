@@ -6,7 +6,7 @@
 
     <!--  App description -->
 	<TextView
-	    android:text="@string/desc_title"
+	    android:id="@+id/desc_title"
 	    android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center_horizontal"
