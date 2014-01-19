@@ -1,6 +1,7 @@
 package eu.scialom.salarycalc;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,8 +107,11 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 					adapter.notifyDataSetChanged();
 				}
 			};
+			final Resources res = getResources();
+			final String sOK = res.getString(R.string.ok);
+			final String sKO = res.getString(R.string.cancel);
 			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, (Integer) this.value,
-				"Update " + this.name + " value", "OK", "Cancel (back to " + this.value + ")");
+				"Update " + this.name + " value", sOK, String.format(sKO, this.value));
 			dialog.getNumberPicker().setRange(1, 24 * 7);
 			dialog.setOnNumberSetListener(listener);
 			dialog.show();
@@ -122,9 +126,12 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 					adapter.notifyDataSetChanged();
 				}
 			};
+			final Resources res = getResources();
+			final String sOK = res.getString(R.string.ok);
+			final String sKO = res.getString(R.string.cancel);
 			final int rate = (int) ((Float) this.value * 100.0f);
 			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, rate, "Update "
-				+ this.name + " value", "OK", "Cancel (back to " + rate + "%)");
+				+ this.name + " value", sOK, String.format(sKO, rate));
 			dialog.getNumberPicker().setRange(0, 100);
 			dialog.setOnNumberSetListener(listener);
 			dialog.show();
@@ -136,13 +143,14 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 
 		Settings s = MainTab.calc.getSettings();
 		s.load(context);
+		Resources res = getResources();	
 		final Option opt[] = new Option[] {
-			new Option("Tax rate", "The part of the salary the employee have to pay, in percent.",
+			new Option(res.getString(R.string.tax_rate_name), res.getString(R.string.tax_rate_desc),
 				Option.TYPE_FLOAT, 1.0f - s.taxRate),
-			new Option("Hours per week", "The number of hour worked in a typical week.",
+				new Option(res.getString(R.string.hours_per_week_name), res.getString(R.string.hours_per_week_desc),
 				Option.TYPE_INTEGER, s.hourPerWeek),
-			new Option("Months per year",
-				"Number of administrative months the year is split into.", Option.TYPE_INTEGER, s.monthsPerYear) };
+				new Option(res.getString(R.string.months_per_year_name), res.getString(R.string.months_per_year_desc),
+				Option.TYPE_INTEGER, s.monthsPerYear) };
 
 		final Adapter data = new Adapter(context, opt);
 		this.setAdapter(data);
@@ -151,7 +159,7 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 
 	@Override
 	public String getShortName() {
-		return "Options";
+		return this.getResources().getString(R.string.option_tab);
 	}
 
 	@Override

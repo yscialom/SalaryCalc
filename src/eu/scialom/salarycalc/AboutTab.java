@@ -1,6 +1,7 @@
 package eu.scialom.salarycalc;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -18,12 +19,21 @@ public class AboutTab extends ScrollView implements MyTab {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		final View rowView = inflater.inflate(R.layout.about_tab, this, false);
 		this.addView(rowView);
+		
+		Resources res = getResources();
+		
+		// Description
+		TextView desc = (TextView)rowView.findViewById(R.id.desc_text);
+		String html = res.getString(R.string.desc_text);
+		String appName = res.getString(R.string.app_name);
+		String appVersion = res.getString(R.string.app_version);
+		String appYear = res.getString(R.string.app_year);
+		String appAuthor = res.getString(R.string.app_author);
+		desc.setText(Html.fromHtml(String.format(html,appName, appVersion, appYear, appAuthor)));
+		desc.setMovementMethod(LinkMovementMethod.getInstance());
 
 		// Thanks To
-		String[] externalCredits = {
-			"<a href=\"actionbarsherlock.com\">ActionBarSherlock 4.4.0</a>",
-			"<a href=\"https://github.com/michaelnovakjr/numberpicker\">NumberPicker</a>"
-		};
+		String[] externalCredits = res.getStringArray(R.array.external_credits_list);
 		LinearLayout le = (LinearLayout) rowView.findViewById(R.id.external_credits);
 		for (String s : externalCredits) {
 			TextView t = new TextView(context);
@@ -33,9 +43,7 @@ public class AboutTab extends ScrollView implements MyTab {
 		}
 
 		// Developpers
-		String[] internalCredits = {
-			"Yankel Scialom (YSC) <yankel.scialom@mail.com>"
-		};
+		String[] internalCredits = res.getStringArray(R.array.internal_credits_list);
 		LinearLayout li = (LinearLayout) rowView.findViewById(R.id.internal_credits);
 		for (String s : internalCredits) {
 			TextView t = new TextView(context);
@@ -46,7 +54,7 @@ public class AboutTab extends ScrollView implements MyTab {
 
 	@Override
 	public String getShortName() {
-		return "About";
+		return this.getResources().getString(R.string.about_tab);
 	}
 
 	@Override

@@ -6,7 +6,7 @@
 
     <!--  App description -->
 	<TextView
-	    android:text="What is SalaryCalc?"
+	    android:text="@string/desc_title"
 	    android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center_horizontal"
@@ -14,13 +14,13 @@
 		android:layout_marginBottom = "5dip"
 	    style="?android:attr/listSeparatorTextViewStyle" />
 	<TextView 
-	    android:text="blablabla"
+	    android:id="@+id/desc_text"
 	    android:layout_width="match_parent"
 		android:layout_height="wrap_content" />
 
 	<!--  External credits -->
 	<TextView
-	    android:text="Thanks to"
+	    android:text="@string/external_credits_title"
 	    android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center_horizontal"
@@ -35,7 +35,7 @@
 
 	<!--  Internal credits -->
 	<TextView
-	    android:text="Developers"
+	    android:text="@string/internal_credits_title"
 	    android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center_horizontal"
