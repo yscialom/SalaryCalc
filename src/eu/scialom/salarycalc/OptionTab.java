@@ -62,6 +62,7 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 			s.taxRate = 1.0f - ((Float) this.getItem(0).value);
 			s.hourPerWeek = (Integer) this.getItem(1).value;
 			s.monthsPerYear = (Integer) this.getItem(2).value;
+			s.save(context);
 			c.setSettings(s);
 		}
 	}
@@ -134,6 +135,7 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 		super(context);
 
 		Settings s = MainTab.calc.getSettings();
+		s.load(context);
 		final Option opt[] = new Option[] {
 			new Option("Tax rate", "The part of the salary the employee have to pay, in percent.",
 				Option.TYPE_FLOAT, 1.0f - s.taxRate),

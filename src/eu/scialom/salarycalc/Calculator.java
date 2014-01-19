@@ -1,11 +1,31 @@
 package eu.scialom.salarycalc;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 public class Calculator {
 	public class Settings {
 		public float taxRate = 1f - 0.22f;
 		public int hourPerWeek = 35;
 		public int monthsPerYear = 12;
 		private final float weeksPerMonth = 4.348f;
+
+		private final static String spName = "eu.scialom.salarycalc.settings";
+		public void save(Context context) {
+			 SharedPreferences sp = context.getSharedPreferences(spName, Context.MODE_PRIVATE);
+			 SharedPreferences.Editor edit = sp.edit();
+			 edit.putFloat("taxRate", this.taxRate);
+			 edit.putInt("hourPerWeek", this.hourPerWeek);
+			 edit.putInt("monthsPerYear", this.monthsPerYear);
+			 edit.commit();
+		}
+
+		public void load(Context context) {
+			SharedPreferences sp = context.getSharedPreferences(spName, Context.MODE_PRIVATE);
+			this.taxRate = sp.getFloat("taxRate", this.taxRate);
+			this.hourPerWeek = sp.getInt("hourPerWeek", this.hourPerWeek);
+			this.monthsPerYear = sp.getInt("monthsPerYear", this.monthsPerYear);
+		}
 	}
 
 	private Settings settings = new Settings();
