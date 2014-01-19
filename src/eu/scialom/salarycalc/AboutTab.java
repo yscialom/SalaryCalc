@@ -1,6 +1,8 @@
 package eu.scialom.salarycalc;
 
 import android.content.Context;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -19,13 +21,14 @@ public class AboutTab extends ScrollView implements MyTab {
 
 		// Thanks To
 		String[] externalCredits = {
-			"ActionBarSherlock 4.4.0 --- actionbarsherlock.com",
-			"NumberPicker --- github.com/michaelnovakjr/numberpicker"
+			"<a href=\"actionbarsherlock.com\">ActionBarSherlock 4.4.0</a>",
+			"<a href=\"https://github.com/michaelnovakjr/numberpicker\">NumberPicker</a>"
 		};
 		LinearLayout le = (LinearLayout) rowView.findViewById(R.id.external_credits);
 		for (String s : externalCredits) {
 			TextView t = new TextView(context);
-			t.setText(s);
+			t.setText(Html.fromHtml(s));
+			t.setMovementMethod(LinkMovementMethod.getInstance());
 			le.addView(t);
 		}
 
