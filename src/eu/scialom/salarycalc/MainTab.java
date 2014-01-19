@@ -18,7 +18,6 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 	private class Format extends LinearLayout {
 		public TextView name;
 		public EditText value;
-		public Button submit;
 		private final int displayWidth;
 
 		@SuppressWarnings("deprecation")
@@ -31,21 +30,17 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 			this.displayWidth = display.getWidth();
 
 			this.setOrientation(LinearLayout.HORIZONTAL);
-			this.name = new TextView(context);
+			this.name = new Button(context);
 			this.name.setText(name);
-			this.name.setMinimumWidth(this.pixelWidthFromPerCent(20));
+			this.name.setMinimumWidth(this.pixelWidthFromPerCent(25));
+			this.name.setOnClickListener(cb);
 			this.addView(this.name);
 			this.value = new EditText(context);
 			this.value.setInputType(InputType.TYPE_CLASS_NUMBER
 				| InputType.TYPE_NUMBER_FLAG_DECIMAL);
 			this.value.setText(defaultValue);
-			this.value.setMinimumWidth(this.pixelWidthFromPerCent(60));
+			this.value.setMinimumWidth(this.pixelWidthFromPerCent(75));
 			this.addView(this.value);
-			this.submit = new Button(context);
-			this.submit.setText("Compute");
-			this.submit.setMinimumWidth(this.pixelWidthFromPerCent(20));
-			this.submit.setOnClickListener(cb);
-			this.addView(this.submit);
 		}
 
 		private int pixelWidthFromPerCent(int percentage) {
@@ -102,7 +97,7 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 
 		// Find input format
 		for (final Format f : this.formats)
-			if (f.submit == v) {
+			if (f.name == v) {
 				position = this.formats.indexOf(f);
 				try {
 					value = Float.valueOf(f.value.getText().toString());
