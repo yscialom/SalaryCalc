@@ -12,9 +12,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class MainTab extends LinearLayout implements MyTab, OnClickListener {
+public class MainTab extends ScrollView implements MyTab, OnClickListener {
 
 	private class Format extends LinearLayout {
 		public TextView name;
@@ -49,6 +50,7 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 		}
 	}
 
+	private LinearLayout l;
 	private final Vector<Format> formats;
 	private final Button reset;
 	public static Calculator calc;
@@ -58,13 +60,15 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 
 		MainTab.calc = new Calculator();
 		Context c = this.getContext();
-		Resources res = getResources();	
+		Resources res = getResources();
+
+		l = new LinearLayout(context);
 
 		this.reset = new Button(this.getContext());
 		this.reset.setText(res.getString(R.string.reset));
 		this.reset.setOnClickListener(this);
 
-		this.setOrientation(LinearLayout.VERTICAL);
+		l.setOrientation(LinearLayout.VERTICAL);
 		this.formats = new Vector<Format>();	
 		this.formats.add(new Format(c, res.getString(R.string.annual_bt), "", this));
 		this.formats.add(new Format(c, res.getString(R.string.annual_at), "", this));
@@ -74,6 +78,7 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 		this.formats.add(new Format(c, res.getString(R.string.hourly_at), "", this));
 
 		this.regenUI();
+		this.addView(l);
 	}
 
 	@Override
@@ -144,10 +149,10 @@ public class MainTab extends LinearLayout implements MyTab, OnClickListener {
 	}
 
 	private void regenUI() {
-		this.removeAllViews();
+		l.removeAllViews();
 		for (final Format f : this.formats)
-			this.addView(f);
-		this.addView(this.reset);
+			l.addView(f);
+		l.addView(this.reset);
 	}
 
 }
