@@ -58,10 +58,11 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 		public void notifyDataSetChanged() {
 			super.notifyDataSetChanged();
 			final Calculator c = MainTab.calc;
-			final Settings s = c.getSettings();
-			s.taxRate = 1.0f - ((Float) this.getItem(0).value / 100.0f);
+			Settings s = c.getSettings();
+			s.taxRate = 1.0f - ((Float) this.getItem(0).value);
 			s.hourPerWeek = (Integer) this.getItem(1).value;
 			s.monthsPerYear = (Integer) this.getItem(2).value;
+			c.setSettings(s);
 		}
 	}
 
