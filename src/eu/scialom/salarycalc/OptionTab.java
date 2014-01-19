@@ -133,13 +133,14 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 	public OptionTab(Context context) {
 		super(context);
 
+		Settings s = MainTab.calc.getSettings();
 		final Option opt[] = new Option[] {
 			new Option("Tax rate", "The part of the salary the employee have to pay, in percent.",
-				Option.TYPE_FLOAT, 0.2f),
+				Option.TYPE_FLOAT, 1.0f - s.taxRate),
 			new Option("Hours per week", "The number of hour worked in a typical week.",
-				Option.TYPE_INTEGER, 35),
+				Option.TYPE_INTEGER, s.hourPerWeek),
 			new Option("Months per year",
-				"Number of administrative months the year is split into.", Option.TYPE_INTEGER, 12) };
+				"Number of administrative months the year is split into.", Option.TYPE_INTEGER, s.monthsPerYear) };
 
 		final Adapter data = new Adapter(context, opt);
 		this.setAdapter(data);
