@@ -50,7 +50,7 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		}
 	}
 
-	private LinearLayout l;
+	private final LinearLayout l;
 	private final Vector<Format> formats;
 	private final Button reset;
 	public static Calculator calc;
@@ -59,17 +59,17 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		super(context);
 
 		MainTab.calc = new Calculator();
-		Context c = this.getContext();
-		Resources res = getResources();
+		final Context c = this.getContext();
+		final Resources res = this.getResources();
 
-		l = new LinearLayout(context);
+		this.l = new LinearLayout(context);
 
 		this.reset = new Button(this.getContext());
 		this.reset.setText(res.getString(R.string.reset));
 		this.reset.setOnClickListener(this);
 
-		l.setOrientation(LinearLayout.VERTICAL);
-		this.formats = new Vector<Format>();	
+		this.l.setOrientation(LinearLayout.VERTICAL);
+		this.formats = new Vector<Format>();
 		this.formats.add(new Format(c, res.getString(R.string.annual_bt), "", this));
 		this.formats.add(new Format(c, res.getString(R.string.annual_at), "", this));
 		this.formats.add(new Format(c, res.getString(R.string.monthly_bt), "", this));
@@ -78,7 +78,7 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		this.formats.add(new Format(c, res.getString(R.string.hourly_at), "", this));
 
 		this.regenUI();
-		this.addView(l);
+		this.addView(this.l);
 	}
 
 	@Override
@@ -149,10 +149,10 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 	}
 
 	private void regenUI() {
-		l.removeAllViews();
+		this.l.removeAllViews();
 		for (final Format f : this.formats)
-			l.addView(f);
-		l.addView(this.reset);
+			this.l.addView(f);
+		this.l.addView(this.reset);
 	}
 
 }

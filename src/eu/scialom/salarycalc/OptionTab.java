@@ -41,14 +41,14 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 			desc.setText(opt.description);
 			switch (opt.type) {
 			case Option.TYPE_TEXT:
-				value.setText((String)opt.value);
+				value.setText((String) opt.value);
 				break;
 			case Option.TYPE_INTEGER:
-				value.setText(Integer.toString((Integer)opt.value));
+				value.setText(Integer.toString((Integer) opt.value));
 				break;
 			case Option.TYPE_FLOAT:
-				Float v = (Float)opt.value;
-				value.setText(String.format("%.0f%%", 100*v));
+				final Float v = (Float) opt.value;
+				value.setText(String.format("%.0f%%", 100 * v));
 				break;
 			}
 
@@ -59,11 +59,11 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 		public void notifyDataSetChanged() {
 			super.notifyDataSetChanged();
 			final Calculator c = MainTab.calc;
-			Settings s = c.getSettings();
+			final Settings s = c.getSettings();
 			s.taxRate = 1.0f - ((Float) this.getItem(0).value);
 			s.hourPerWeek = (Integer) this.getItem(1).value;
 			s.monthsPerYear = (Integer) this.getItem(2).value;
-			s.save(context);
+			s.save(this.context);
 			c.setSettings(s);
 		}
 	}
@@ -107,7 +107,7 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 					adapter.notifyDataSetChanged();
 				}
 			};
-			final Resources res = getResources();
+			final Resources res = OptionTab.this.getResources();
 			final String sOK = res.getString(R.string.ok);
 			final String sKO = res.getString(R.string.cancel);
 			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, (Integer) this.value,
@@ -126,7 +126,7 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 					adapter.notifyDataSetChanged();
 				}
 			};
-			final Resources res = getResources();
+			final Resources res = OptionTab.this.getResources();
 			final String sOK = res.getString(R.string.ok);
 			final String sKO = res.getString(R.string.cancel);
 			final int rate = (int) ((Float) this.value * 100.0f);
@@ -141,16 +141,16 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 	public OptionTab(Context context) {
 		super(context);
 
-		Settings s = MainTab.calc.getSettings();
+		final Settings s = MainTab.calc.getSettings();
 		s.load(context);
-		Resources res = getResources();	
+		final Resources res = this.getResources();
 		final Option opt[] = new Option[] {
-			new Option(res.getString(R.string.tax_rate_name), res.getString(R.string.tax_rate_desc),
-				Option.TYPE_FLOAT, 1.0f - s.taxRate),
-				new Option(res.getString(R.string.hours_per_week_name), res.getString(R.string.hours_per_week_desc),
-				Option.TYPE_INTEGER, s.hourPerWeek),
-				new Option(res.getString(R.string.months_per_year_name), res.getString(R.string.months_per_year_desc),
-				Option.TYPE_INTEGER, s.monthsPerYear) };
+			new Option(res.getString(R.string.tax_rate_name),
+				res.getString(R.string.tax_rate_desc), Option.TYPE_FLOAT, 1.0f - s.taxRate),
+			new Option(res.getString(R.string.hours_per_week_name),
+				res.getString(R.string.hours_per_week_desc), Option.TYPE_INTEGER, s.hourPerWeek),
+			new Option(res.getString(R.string.months_per_year_name),
+				res.getString(R.string.months_per_year_desc), Option.TYPE_INTEGER, s.monthsPerYear) };
 
 		final Adapter data = new Adapter(context, opt);
 		this.setAdapter(data);

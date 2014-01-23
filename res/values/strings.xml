@@ -1,69 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--  Application -->
-    <string name="app_name">SalaryCalc</string>
+	<!--  Application -->
+	<string name="app_name">SalaryCalc</string>
 	<string name="app_version">0.1</string>
 	<string name="app_year">2014</string>
 	<string name="app_author">Yankel Scialom</string>
-    
+
 	<!-- Tabs -->
-    <string name="main_tab">Calculator</string>
-    <string name="option_tab">Options</string>
-    <string name="about_tab">About</string>
+	<string name="main_tab">Calculator</string>
+	<string name="option_tab">Options</string>
+	<string name="about_tab">About</string>
 
-    <!--  Main Tab -->
-    <string name="annual_bt">Annual (BT):</string>
-    <string name="annual_at">Annual (AT):</string>
-    <string name="monthly_bt">Monthly (BT):</string>
-    <string name="monthly_at">Monthly (AT):</string>
-    <string name="hourly_bt">Hourly (BT):</string>
-    <string name="hourly_at">Hourly (AT):</string>
-    <string name="reset">Reset</string>
-    
-    <!--  Option Tab -->
-    <string name="tax_rate_name">Tax rate</string>
-    <string name="tax_rate_desc">The part of the salary the employee have to pay, in percent.</string>
-    <string name="hours_per_week_name">Hours per week</string>
-    <string name="hours_per_week_desc">The number of hour worked in a typical week.</string>
-    <string name="months_per_year_name">Months per year</string>
-    <string name="months_per_year_desc">Number of administrative months the year is split into.</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel (back to %1$d)</string><!-- rate -->
-    
-    <!--  About Tab -->
-    <string name="desc_title">What is %1$s?</string>
-    <string name="desc_text"><![CDATA[
-        <p>%1$s is an Android application designed to help you switch from annual wages to monthly or
-        hourly wages, before or after taxes, according to configurable settings.</p>
+	<!--  Main Tab -->
+	<string name="annual_bt">Annual (BT):</string>
+	<string name="annual_at">Annual (AT):</string>
+	<string name="monthly_bt">Monthly (BT):</string>
+	<string name="monthly_at">Monthly (AT):</string>
+	<string name="hourly_bt">Hourly (BT):</string>
+	<string name="hourly_at">Hourly (AT):</string>
+	<string name="reset">Reset</string>
 
-        <p>%1$s version %2$s, Copyright (C) %3$s %4$s. %1$s comes with ABSOLUTELY NO WARRANTY. This is free
-        software, and you are welcome to redistribute it under certain conditions. Please consider reading the
-        <a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\">GNU General Public License v2</a>
-        for more information.</p>
-    ]]></string><!-- 
-    	1: app_name
-    	2: app_version
-    	3: app_year
-    	4: app_author
-	-->
-    
-    <!-- External Credits -->
-    <string name="external_credits_title">Thanks to</string>
-    <string-array name="external_credits_list">
-	    <item><![CDATA[
-	        <a href="http://actionbarsherlock.com">ActionBarSherlock 4.4.0</a>
-	    ]]></item>
-	    <item><![CDATA[
-	    	<a href="https://github.com/michaelnovakjr/numberpicker">NumberPicker</a>
-	   	]]></item>
+	<!--  Option Tab -->
+	<string name="tax_rate_name">Tax rate</string>
+	<string name="tax_rate_desc">The part of the salary the employee have to pay, in percent.</string>
+	<string name="hours_per_week_name">Hours per week</string>
+	<string name="hours_per_week_desc">The number of hour worked in a typical week.</string>
+	<string name="months_per_year_name">Months per year</string>
+	<string name="months_per_year_desc">Number of administrative months the year is split into.</string>
+	<string name="ok">OK</string>
+	<string name="cancel">Cancel (back to %1$d)</string><!-- rate -->
+
+	<!--  About Tab -->
+	<string name="desc_title">What is %1$s?</string>
+	<string name="desc_text"><![CDATA[
+		<p>%1$s is an Android application designed to help you switch from annual wages to monthly or
+		hourly wages, before or after taxes, according to configurable settings.</p>
+
+		<p>%1$s version %2$s, Copyright (C) %3$s %4$s. %1$s comes with ABSOLUTELY NO WARRANTY. This is free
+		software, and you are welcome to redistribute it under certain conditions. Please consider reading the
+		<a href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\">GNU General Public License v2</a>
+		for more information.</p>
+	]]></string><!-- 1: app_name, 2: app_version, 3: app_year, 4: app_author -->
+
+	<!-- External Credits -->
+	<string name="external_credits_title">Thanks to</string>
+	<string-array name="external_credits_list">
+		<item><![CDATA[
+			<a href="http://actionbarsherlock.com">ActionBarSherlock 4.4.0</a>
+		]]></item>
+		<item><![CDATA[
+			<a href="https://github.com/michaelnovakjr/numberpicker">NumberPicker</a>
+		]]></item>
 	</string-array>
-	
-    <!--  Internal Credits -->
-    <string name="internal_credits_title">Developpers</string>
-    <string-array name="internal_credits_list">
-	    <item><![CDATA[
-	        Yankel Scialom (YSC) <yankel.scialom@mail.com>
-	    ]]></item>
+
+	<!--  Internal Credits -->
+	<string name="internal_credits_title">Developpers</string>
+	<string-array name="internal_credits_list">
+		<item><![CDATA[
+			Yankel Scialom (YSC) <yankel.scialom@mail.com>
+		]]></item>
 	</string-array>
 </resources>

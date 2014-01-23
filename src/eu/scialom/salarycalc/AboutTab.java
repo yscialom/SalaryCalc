@@ -16,40 +16,40 @@ public class AboutTab extends ScrollView implements MyTab {
 		super(context);
 
 		final LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		final View rowView = inflater.inflate(R.layout.about_tab, this, false);
 		this.addView(rowView);
-		
-		Resources res = getResources();
-		
+
+		final Resources res = this.getResources();
+
 		// Description
-		TextView tTitle= (TextView)rowView.findViewById(R.id.desc_title);
-		TextView tDesc = (TextView)rowView.findViewById(R.id.desc_text);
-		String html = res.getString(R.string.desc_text);
-		String appName = res.getString(R.string.app_name);
-		String appVersion = res.getString(R.string.app_version);
-		String appYear = res.getString(R.string.app_year);
-		String appAuthor = res.getString(R.string.app_author);
-		String title = String.format(res.getString(R.string.desc_title), appName);
+		final TextView tTitle = (TextView) rowView.findViewById(R.id.desc_title);
+		final TextView tDesc = (TextView) rowView.findViewById(R.id.desc_text);
+		final String html = res.getString(R.string.desc_text);
+		final String appName = res.getString(R.string.app_name);
+		final String appVersion = res.getString(R.string.app_version);
+		final String appYear = res.getString(R.string.app_year);
+		final String appAuthor = res.getString(R.string.app_author);
+		final String title = String.format(res.getString(R.string.desc_title), appName);
 		tTitle.setText(title);
-		tDesc.setText(Html.fromHtml(String.format(html,appName, appVersion, appYear, appAuthor)));
+		tDesc.setText(Html.fromHtml(String.format(html, appName, appVersion, appYear, appAuthor)));
 		tDesc.setMovementMethod(LinkMovementMethod.getInstance());
 
 		// Thanks To
-		String[] externalCredits = res.getStringArray(R.array.external_credits_list);
-		LinearLayout le = (LinearLayout) rowView.findViewById(R.id.external_credits);
-		for (String s : externalCredits) {
-			TextView t = new TextView(context);
+		final String[] externalCredits = res.getStringArray(R.array.external_credits_list);
+		final LinearLayout le = (LinearLayout) rowView.findViewById(R.id.external_credits);
+		for (final String s : externalCredits) {
+			final TextView t = new TextView(context);
 			t.setText(Html.fromHtml(s));
 			t.setMovementMethod(LinkMovementMethod.getInstance());
 			le.addView(t);
 		}
 
 		// Developpers
-		String[] internalCredits = res.getStringArray(R.array.internal_credits_list);
-		LinearLayout li = (LinearLayout) rowView.findViewById(R.id.internal_credits);
-		for (String s : internalCredits) {
-			TextView t = new TextView(context);
+		final String[] internalCredits = res.getStringArray(R.array.internal_credits_list);
+		final LinearLayout li = (LinearLayout) rowView.findViewById(R.id.internal_credits);
+		for (final String s : internalCredits) {
+			final TextView t = new TextView(context);
 			t.setText(s);
 			li.addView(t);
 		}
