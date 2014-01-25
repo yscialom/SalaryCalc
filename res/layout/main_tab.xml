@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:stretchColumns="1" >
+
+	<!--               ANNUAL               -->
+	<!--  ANNUAL BT -->
+	<TableRow>
+		<Button
+			android:id="@+id/annual_bt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/annual_bt" />
+		<EditText
+			android:id="@+id/annual_bt_value"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="number" />
+	</TableRow>
+
+	<!--  ANNUAL AT -->
+	<TableRow>
+		<Button
+			android:id="@+id/annual_at"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/annual_bt" />
+		<EditText
+			android:id="@+id/annual_at_value"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="number" />
+	</TableRow>
+
+
+	<!--               MONTHLY               -->
+	<!--  MONTHLY BT -->
+	<TableRow>
+		<Button
+			android:id="@+id/monthly_bt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/annual_at" />
+		<EditText
+			android:id="@+id/monthly_bt_value"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="number" />
+	</TableRow>
+
+	<!--  MONTHLY AT -->
+	<TableRow>
+		<Button
+			android:id="@+id/monthly_at"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/monthly_bt" />
+		<EditText
+			android:id="@+id/monthly_at_value"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="number" />
+	</TableRow>
+
+
+	<!--               HOURLY               -->
+	<!--  HOURLY BT -->
+	<TableRow>
+		<Button
+			android:id="@+id/hourly_bt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/monthly_at" />
+		<EditText
+			android:id="@+id/hourly_bt_value"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="numberDecimal" />
+	</TableRow>
+
+	<!--  HOURLY AT -->
+	<TableRow>
+		<Button
+			android:id="@+id/hourly_at"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/hourly_bt" />
+		<EditText
+			android:id="@+id/hourly_at_value"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="numberDecimal" />
+	</TableRow>
+
+
+	<!--               RESET               -->
+	<TableRow>
+		<Button
+			android:id="@+id/reset"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_span="2"
+			android:text="@string/reset" />
+	</TableRow>
+</TableLayout>

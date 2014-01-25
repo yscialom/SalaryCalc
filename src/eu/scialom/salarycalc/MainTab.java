@@ -3,82 +3,56 @@ package eu.scialom.salarycalc;
 import java.util.Vector;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.InputType;
-import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 public class MainTab extends ScrollView implements MyTab, OnClickListener {
 
-	private class Format extends LinearLayout {
-		public TextView name;
-		public EditText value;
-		private final int displayWidth;
+	private class Line {
+		Button b;
+		EditText e;
 
-		@SuppressWarnings("deprecation")
-		public Format(Context context, String name, String defaultValue, OnClickListener cb) {
-			super(context);
-
-			final WindowManager wm = (WindowManager) context
-				.getSystemService(Context.WINDOW_SERVICE);
-			final Display display = wm.getDefaultDisplay();
-			this.displayWidth = display.getWidth();
-
-			this.setOrientation(LinearLayout.HORIZONTAL);
-			this.name = new Button(context);
-			this.name.setText(name);
-			this.name.setMinimumWidth(this.pixelWidthFromPerCent(25));
-			this.name.setOnClickListener(cb);
-			this.addView(this.name);
-			this.value = new EditText(context);
-			this.value.setInputType(InputType.TYPE_CLASS_NUMBER
-				| InputType.TYPE_NUMBER_FLAG_DECIMAL);
-			this.value.setText(defaultValue);
-			this.value.setMinimumWidth(this.pixelWidthFromPerCent(75));
-			this.addView(this.value);
-		}
-
-		private int pixelWidthFromPerCent(int percentage) {
-			return percentage * this.displayWidth / 100;
+		Line(View parent, int b, int e) {
+			this.b = (Button) parent.findViewById(b);
+			this.e = (EditText) parent.findViewById(e);
+			if (null == this.b)
+				System.out.println("b is NULL");
+			if (null == this.e)
+				System.out.println("e is NULL");
 		}
 	}
 
-	private final LinearLayout l;
-	private final Vector<Format> formats;
+	private final Vector<Line> lines;
 	private final Button reset;
 	public static Calculator calc;
 
 	public MainTab(Context context) {
 		super(context);
 
+		final LayoutInflater inflater = (LayoutInflater) context
+			.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		final View rowView = inflater.inflate(R.layout.main_tab, this, false);
+		this.addView(rowView);
+
 		MainTab.calc = new Calculator();
-		final Context c = this.getContext();
-		final Resources res = this.getResources();
 
-		this.l = new LinearLayout(context);
+		this.lines = new Vector<Line>();
+		this.lines.add(new Line(rowView, R.id.annual_bt, R.id.annual_bt_value));
+		this.lines.add(new Line(rowView, R.id.annual_at, R.id.annual_at_value));
+		this.lines.add(new Line(rowView, R.id.monthly_bt, R.id.monthly_bt_value));
+		this.lines.add(new Line(rowView, R.id.monthly_at, R.id.monthly_at_value));
+		this.lines.add(new Line(rowView, R.id.hourly_bt, R.id.hourly_bt_value));
+		this.lines.add(new Line(rowView, R.id.hourly_at, R.id.hourly_at_value));
 
-		this.reset = new Button(this.getContext());
-		this.reset.setText(res.getString(R.string.reset));
+		for (final Line l : this.lines)
+			l.b.setOnClickListener(this);
+
+		this.reset = (Button) rowView.findViewById(R.id.reset);
 		this.reset.setOnClickListener(this);
-
-		this.l.setOrientation(LinearLayout.VERTICAL);
-		this.formats = new Vector<Format>();
-		this.formats.add(new Format(c, res.getString(R.string.annual_bt), "", this));
-		this.formats.add(new Format(c, res.getString(R.string.annual_at), "", this));
-		this.formats.add(new Format(c, res.getString(R.string.monthly_bt), "", this));
-		this.formats.add(new Format(c, res.getString(R.string.monthly_at), "", this));
-		this.formats.add(new Format(c, res.getString(R.string.hourly_bt), "", this));
-		this.formats.add(new Format(c, res.getString(R.string.hourly_at), "", this));
-
-		this.regenUI();
-		this.addView(this.l);
 	}
 
 	@Override
@@ -98,24 +72,21 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 
 		// Special case: clicked on reset?
 		if (this.reset == v) {
-			for (final Format f : this.formats)
-				f.value.setText("");
+			for (final Line l : this.lines)
+				l.e.setText("");
 			return;
 		}
 
 		// Find input format
-		for (final Format f : this.formats)
-			if (f.name == v) {
-				position = this.formats.indexOf(f);
+		for (final Line l : this.lines)
+			if (l.b == v) {
+				position = this.lines.indexOf(l);
 				try {
-					value = Float.valueOf(f.value.getText().toString());
+					value = Float.valueOf(l.e.getText().toString());
 				} catch (final NumberFormatException e) {
 					value = 0f;
 				}
 			}
-
-		// Update Calculator settings
-		// this.get
 
 		// Update Calculator base
 		switch (position) {
@@ -140,19 +111,12 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		}
 
 		// Update output formats
-		this.formats.get(0).value.setText(Integer.toString(MainTab.calc.getAnnualBT()));
-		this.formats.get(1).value.setText(Integer.toString(MainTab.calc.getAnnualAT()));
-		this.formats.get(2).value.setText(Integer.toString(MainTab.calc.getMonthlyBT()));
-		this.formats.get(3).value.setText(Integer.toString(MainTab.calc.getMonthlyAT()));
-		this.formats.get(4).value.setText(String.format("%.2f", MainTab.calc.getHourlyBT()));
-		this.formats.get(5).value.setText(String.format("%.2f", MainTab.calc.getHourlyAT()));
-	}
-
-	private void regenUI() {
-		this.l.removeAllViews();
-		for (final Format f : this.formats)
-			this.l.addView(f);
-		this.l.addView(this.reset);
+		this.lines.get(0).e.setText(Integer.toString(MainTab.calc.getAnnualBT()));
+		this.lines.get(1).e.setText(Integer.toString(MainTab.calc.getAnnualAT()));
+		this.lines.get(2).e.setText(Integer.toString(MainTab.calc.getMonthlyBT()));
+		this.lines.get(3).e.setText(Integer.toString(MainTab.calc.getMonthlyAT()));
+		this.lines.get(4).e.setText(String.format("%.2f", MainTab.calc.getHourlyBT()));
+		this.lines.get(5).e.setText(String.format("%.2f", MainTab.calc.getHourlyAT()));
 	}
 
 }
