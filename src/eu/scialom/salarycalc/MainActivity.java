@@ -2,10 +2,13 @@ package eu.scialom.salarycalc;
 
 import java.util.Vector;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -15,10 +18,12 @@ import com.actionbarsherlock.app.SherlockActivity;
 public class MainActivity extends SherlockActivity implements ActionBar.TabListener {
 	private RelativeLayout lMain;
 	private Vector<MyTab> tabs;
+	public static Activity activity;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		activity = this;
 
 		// Create layout
 		this.lMain = new RelativeLayout(this);
@@ -54,6 +59,12 @@ public class MainActivity extends SherlockActivity implements ActionBar.TabListe
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction transaction) {
 		this.showTab(tab.getPosition());
+		final View v = this.getWindow().getDecorView();
+		if (null == v)
+			return;
+		final InputMethodManager imm = (InputMethodManager) this
+			.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 	}
 
 	@Override

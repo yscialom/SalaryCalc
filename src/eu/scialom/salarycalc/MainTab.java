@@ -29,7 +29,6 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 
 	private final Vector<Line> lines;
 	private final Button reset;
-	private final InputMethodManager imm;
 	public static Calculator calc;
 
 	public MainTab(Context context) {
@@ -41,7 +40,6 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		this.addView(rowView);
 
 		MainTab.calc = new Calculator();
-		this.imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 
 		this.lines = new Vector<Line>();
 		this.lines.add(new Line(rowView, R.id.annual_bt, R.id.annual_bt_value));
@@ -68,15 +66,19 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		return this;
 	}
 
-	private void hideKeyboard() {
-		this.imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
+	private void hideKeyboard(View v) {
+		if (null == v)
+			return;
+		final InputMethodManager imm = (InputMethodManager) MainActivity.activity
+			.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 	}
 
 	@Override
 	public void onClick(View v) {
 		int position = -1;
 		float value = 0f;
-		this.hideKeyboard();
+		this.hideKeyboard(v);
 
 		// Special case: clicked on reset?
 		if (this.reset == v) {
