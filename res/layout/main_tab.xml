@@ -16,7 +16,8 @@
 			android:id="@+id/annual_bt_value"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:inputType="number" />
+			android:inputType="number"
+			android:hint="@string/hint" />
 	</TableRow>
 
 	<!--  ANNUAL AT -->
@@ -30,7 +31,8 @@
 			android:id="@+id/annual_at_value"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:inputType="number" />
+			android:inputType="number"
+			android:hint="@string/hint" />
 	</TableRow>
 
 
@@ -46,7 +48,8 @@
 			android:id="@+id/monthly_bt_value"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:inputType="number" />
+			android:inputType="number"
+			android:hint="@string/hint" />
 	</TableRow>
 
 	<!--  MONTHLY AT -->
@@ -60,7 +63,8 @@
 			android:id="@+id/monthly_at_value"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:inputType="number" />
+			android:inputType="number"
+			android:hint="@string/hint" />
 	</TableRow>
 
 
@@ -76,7 +80,8 @@
 			android:id="@+id/hourly_bt_value"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:inputType="numberDecimal" />
+			android:inputType="numberDecimal"
+			android:hint="@string/hint" />
 	</TableRow>
 
 	<!--  HOURLY AT -->
@@ -90,7 +95,8 @@
 			android:id="@+id/hourly_at_value"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:inputType="numberDecimal" />
+			android:inputType="numberDecimal"
+			android:hint="@string/hint" />
 	</TableRow>
 
 

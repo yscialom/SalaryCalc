@@ -20,6 +20,7 @@
 	<string name="hourly_bt">Hourly (BT):</string>
 	<string name="hourly_at">Hourly (AT):</string>
 	<string name="reset">Reset</string>
+	<string name="hint">Wages value</string>
 
 	<!--  Option Tab -->
 	<string name="tax_rate_name">Tax rate</string>

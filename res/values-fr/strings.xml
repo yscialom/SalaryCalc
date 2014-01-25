@@ -20,6 +20,7 @@
 	<string name="hourly_bt">Horraire brut :</string>
 	<string name="hourly_at">Horraire net :</string>
 	<string name="reset">Remise à zéro</string>
+	<string name="hint">Salaire</string>
 
 	<!-- Option Tab -->
 	<string name="tax_rate_name">Charges salariales</string>
