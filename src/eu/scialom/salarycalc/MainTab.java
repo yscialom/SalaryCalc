@@ -6,6 +6,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
@@ -28,6 +29,7 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 
 	private final Vector<Line> lines;
 	private final Button reset;
+	private final InputMethodManager imm;
 	public static Calculator calc;
 
 	public MainTab(Context context) {
@@ -39,6 +41,7 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		this.addView(rowView);
 
 		MainTab.calc = new Calculator();
+		this.imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 
 		this.lines = new Vector<Line>();
 		this.lines.add(new Line(rowView, R.id.annual_bt, R.id.annual_bt_value));
@@ -65,15 +68,19 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		return this;
 	}
 
+	private void hideKeyboard() {
+		this.imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
+	}
+
 	@Override
 	public void onClick(View v) {
 		int position = -1;
 		float value = 0f;
+		this.hideKeyboard();
 
 		// Special case: clicked on reset?
 		if (this.reset == v) {
-			for (final Line l : this.lines)
-				l.e.setText("");
+			this.onReset();
 			return;
 		}
 
@@ -117,6 +124,11 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 		this.lines.get(3).e.setText(Integer.toString(MainTab.calc.getMonthlyAT()));
 		this.lines.get(4).e.setText(String.format("%.2f", MainTab.calc.getHourlyBT()));
 		this.lines.get(5).e.setText(String.format("%.2f", MainTab.calc.getHourlyAT()));
+	}
+
+	private void onReset() {
+		for (final Line l : this.lines)
+			l.e.setText("");
 	}
 
 }
