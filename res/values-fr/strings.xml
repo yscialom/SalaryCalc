@@ -51,7 +51,7 @@
 	]]></string><!-- 1: app_name 2: app_version 3: app_year 4: app_author -->
 
 	<!-- External Credits -->
-	<string name="external_credits_title">Thanks to</string>
+	<string name="external_credits_title">Remerciements particuliers à</string>
 	<string-array name="external_credits_list">
 		<item><![CDATA[
 			<a href="http://actionbarsherlock.com">ActionBarSherlock 4.4.0</a>
