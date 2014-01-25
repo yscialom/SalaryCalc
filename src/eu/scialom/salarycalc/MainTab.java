@@ -3,17 +3,22 @@ package eu.scialom.salarycalc;
 import java.util.Vector;
 
 import android.content.Context;
+import android.content.res.Resources.NotFoundException;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class MainTab extends ScrollView implements MyTab, OnClickListener {
 
-	private class Line {
+	private class Line implements OnEditorActionListener {
 		Button b;
 		EditText e;
 
@@ -21,9 +26,23 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 			this.b = (Button) parent.findViewById(b);
 			this.e = (EditText) parent.findViewById(e);
 			if (null == this.b)
-				System.out.println("b is NULL");
+				throw new NotFoundException("Cant find resource #" + b + " in view '"
+					+ parent.toString() + "'.");
 			if (null == this.e)
-				System.out.println("e is NULL");
+				throw new NotFoundException("Cant find resource #" + e + " in view '"
+					+ parent.toString() + "'.");
+			this.e.setOnEditorActionListener(this);
+		}
+
+		@Override
+		public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+			boolean handled = false;
+			switch (actionId) {
+			case EditorInfo.IME_ACTION_DONE:
+				handled = this.b.performClick();
+				break;
+			}
+			return handled;
 		}
 	}
 

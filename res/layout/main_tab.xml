@@ -17,6 +17,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="number"
+			android:imeOptions ="actionDone"
+			android:singleLine="true"
 			android:hint="@string/hint" />
 	</TableRow>
 
@@ -32,6 +34,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="number"
+			android:imeOptions ="actionDone"
+			android:singleLine="true"
 			android:hint="@string/hint" />
 	</TableRow>
 
@@ -49,6 +53,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="number"
+			android:imeOptions ="actionDone"
+			android:singleLine="true"
 			android:hint="@string/hint" />
 	</TableRow>
 
@@ -64,6 +70,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="number"
+			android:imeOptions ="actionDone"
+			android:singleLine="true"
 			android:hint="@string/hint" />
 	</TableRow>
 
@@ -81,6 +89,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="numberDecimal"
+			android:imeOptions ="actionDone"
+			android:singleLine="true"
 			android:hint="@string/hint" />
 	</TableRow>
 
@@ -96,6 +106,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="numberDecimal"
+			android:imeOptions ="actionDone"
+			android:singleLine="true"
 			android:hint="@string/hint" />
 	</TableRow>
 
