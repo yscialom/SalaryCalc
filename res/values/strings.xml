@@ -3,7 +3,6 @@
 
 	<!--  Application -->
 	<string name="app_name">SalaryCalc</string>
-	<string name="app_version">0.1</string>
 	<string name="app_year">2014</string>
 	<string name="app_author">Yankel Scialom</string>
 

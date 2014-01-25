@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<!-- Application -->
-	<string name="app_name">SalaryCalc</string>
-	<string name="app_version">0.1</string>
-	<string name="app_year">2014</string>
-	<string name="app_author">Yankel Scialom</string>
-
 	<!-- Tabs -->
 	<string name="main_tab">Calculatrice</string>
 	<string name="option_tab">Options</string>

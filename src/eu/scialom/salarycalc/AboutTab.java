@@ -1,6 +1,7 @@
 package eu.scialom.salarycalc;
 
 import android.content.Context;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -27,7 +28,14 @@ public class AboutTab extends ScrollView implements MyTab {
 		final TextView tDesc = (TextView) rowView.findViewById(R.id.desc_text);
 		final String html = res.getString(R.string.desc_text);
 		final String appName = res.getString(R.string.app_name);
-		final String appVersion = res.getString(R.string.app_version);
+		String appVersion;
+		try {
+			appVersion = Integer.toString(context.getPackageManager().getPackageInfo(
+				context.getPackageName(), 0).versionCode);
+			appVersion = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+		} catch (final NameNotFoundException e) {
+			appVersion = "?";
+		}
 		final String appYear = res.getString(R.string.app_year);
 		final String appAuthor = res.getString(R.string.app_author);
 		final String title = String.format(res.getString(R.string.desc_title), appName);
