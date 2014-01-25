@@ -26,7 +26,7 @@
 			android:id="@+id/annual_at"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/annual_bt" />
+			android:text="@string/annual_at" />
 		<EditText
 			android:id="@+id/annual_at_value"
 			android:layout_width="match_parent"
@@ -43,7 +43,7 @@
 			android:id="@+id/monthly_bt"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/annual_at" />
+			android:text="@string/monthly_bt" />
 		<EditText
 			android:id="@+id/monthly_bt_value"
 			android:layout_width="match_parent"
@@ -58,7 +58,7 @@
 			android:id="@+id/monthly_at"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/monthly_bt" />
+			android:text="@string/monthly_at" />
 		<EditText
 			android:id="@+id/monthly_at_value"
 			android:layout_width="match_parent"
@@ -75,7 +75,7 @@
 			android:id="@+id/hourly_bt"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/monthly_at" />
+			android:text="@string/hourly_bt" />
 		<EditText
 			android:id="@+id/hourly_bt_value"
 			android:layout_width="match_parent"
@@ -90,7 +90,7 @@
 			android:id="@+id/hourly_at"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/hourly_bt" />
+			android:text="@string/hourly_at" />
 		<EditText
 			android:id="@+id/hourly_at_value"
 			android:layout_width="match_parent"
