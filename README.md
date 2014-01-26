@@ -7,8 +7,10 @@ ScreenShots
 ==========
 
 Calculator (french localization):
+
 ![JobCatcher Screenshot](https://raw.github.com/yscialom/SalaryCalc/master/screenshots/main_tab.png)
 
 Options (french localization):
+
 ![JobCatcher Screenshot](https://raw.github.com/yscialom/SalaryCalc/master/screenshots/options_tab.png)
 
