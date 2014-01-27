@@ -131,7 +131,7 @@ public class MainTab extends ScrollView implements MyTab, OnClickListener {
 			if (l.b == v) {
 				position = this.lines.indexOf(l);
 				try {
-					value = Float.valueOf(l.e.getText().toString());
+					value = Float.valueOf(l.e.getText().toString().replace(",", "."));
 				} catch (final NumberFormatException e) {
 					value = 0f;
 				}

@@ -109,6 +109,7 @@ Author: Yankel Scialom (YSC) <yankel.scialom@mail.com>
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="numberDecimal"
+			android:digits="0123456789.,"
 			android:imeOptions ="actionDone"
 			android:singleLine="true"
 			android:hint="@string/hint" />
@@ -126,6 +127,7 @@ Author: Yankel Scialom (YSC) <yankel.scialom@mail.com>
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:inputType="numberDecimal"
+			android:digits="0123456789.,"
 			android:imeOptions ="actionDone"
 			android:singleLine="true"
 			android:hint="@string/hint" />
