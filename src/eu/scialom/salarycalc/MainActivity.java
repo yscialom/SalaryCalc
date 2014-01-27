@@ -39,6 +39,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 public class MainActivity extends SherlockActivity implements ActionBar.TabListener {
 	private RelativeLayout lMain;
 	private Vector<MyTab> tabs;
+	private int curTab;
 	public static Activity activity;
 
 	@Override
@@ -69,7 +70,15 @@ public class MainActivity extends SherlockActivity implements ActionBar.TabListe
 			this.lMain.addView(it.getView());
 		}
 
-		this.showTab(0);
+		if (null != savedInstanceState)
+			this.curTab = savedInstanceState.getInt("tab", 0);
+		this.getSupportActionBar().setSelectedNavigationItem(this.curTab);
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt("tab", this.curTab);
 	}
 
 	@Override
@@ -94,6 +103,7 @@ public class MainActivity extends SherlockActivity implements ActionBar.TabListe
 	}
 
 	private void showTab(int position) {
+		this.curTab = position;
 		for (final MyTab it : this.tabs)
 			it.getView().setVisibility(View.GONE);
 		this.tabs.get(position).getView().setVisibility(View.VISIBLE);
