@@ -31,8 +31,8 @@ Author: Yankel Scialom (YSC) <yankel.scialom@mail.com>
 	<string name="annual_at">Annuel net :</string>
 	<string name="monthly_bt">Mensuel brut :</string>
 	<string name="monthly_at">Mensuel net :</string>
-	<string name="hourly_bt">Horraire brut :</string>
-	<string name="hourly_at">Horraire net :</string>
+	<string name="hourly_bt">Horaire brut :</string>
+	<string name="hourly_at">Horaire net :</string>
 	<string name="reset">Remise à zéro</string>
 	<string name="hint">Salaire</string>
 
