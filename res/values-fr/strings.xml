@@ -39,7 +39,7 @@ Author: Yankel Scialom (YSC) <yankel.scialom@mail.com>
 	<!-- Option Tab -->
 	<string name="tax_rate_name">Charges salariales</string>
 	<string name="tax_rate_desc">Pourcentage des charges salariales.</string>
-	<string name="hours_per_week_name">heures par semaine</string>
+	<string name="hours_per_week_name">Heures par semaine</string>
 	<string name="hours_per_week_desc">Nombre d\'heures travaillées dans une semaine
 		typique.</string>
 	<string name="months_per_year_name">Nombre de mois par an</string>
