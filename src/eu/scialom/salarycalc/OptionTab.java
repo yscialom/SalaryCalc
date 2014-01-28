@@ -94,13 +94,15 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 		public static final int TYPE_INTEGER = 0x2;
 		public static final int TYPE_FLOAT = 0x4;
 
-		public String name;
-		public String description;
+		public int name;
+		public int update;
+		public int description;
 		public int type;
 		public Object value;
 
-		public Option(String name, String description, int type, Object value) {
+		public Option(int name, int update, int description, int type, Object value) {
 			this.name = name;
+			this.update = update;
 			this.description = description;
 			this.type = type;
 			this.value = value;
@@ -131,8 +133,9 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 			final Resources res = OptionTab.this.getResources();
 			final String sOK = res.getString(R.string.ok);
 			final String sKO = res.getString(R.string.cancel);
+			final String sUpdate = res.getString(this.update);
 			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, (Integer) this.value,
-				"Update " + this.name + " value", sOK, String.format(sKO, this.value));
+				sUpdate, sOK, String.format(sKO, this.value));
 			dialog.getNumberPicker().setRange(1, 24 * 7);
 			dialog.setOnNumberSetListener(listener);
 			dialog.show();
@@ -150,9 +153,10 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 			final Resources res = OptionTab.this.getResources();
 			final String sOK = res.getString(R.string.ok);
 			final String sKO = res.getString(R.string.cancel);
+			final String sUpdate = res.getString(this.update);
 			final int rate = (int) ((Float) this.value * 100.0f);
-			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, rate, "Update "
-				+ this.name + " value", sOK, String.format(sKO, rate));
+			final NumberPickerDialog dialog = new NumberPickerDialog(c, -1, rate, sUpdate, sOK,
+				String.format(sKO, rate));
 			dialog.getNumberPicker().setRange(0, 100);
 			dialog.setOnNumberSetListener(listener);
 			dialog.show();
@@ -164,14 +168,13 @@ public class OptionTab extends ListView implements MyTab, OnItemClickListener {
 
 		final Settings s = MainTab.calc.getSettings();
 		s.load(context);
-		final Resources res = this.getResources();
 		final Option opt[] = new Option[] {
-			new Option(res.getString(R.string.tax_rate_name),
-				res.getString(R.string.tax_rate_desc), Option.TYPE_FLOAT, 1.0f - s.taxRate),
-			new Option(res.getString(R.string.hours_per_week_name),
-				res.getString(R.string.hours_per_week_desc), Option.TYPE_INTEGER, s.hourPerWeek),
-			new Option(res.getString(R.string.months_per_year_name),
-				res.getString(R.string.months_per_year_desc), Option.TYPE_INTEGER, s.monthsPerYear) };
+			new Option(R.string.tax_rate_name, R.string.tax_rate_update, R.string.tax_rate_desc,
+				Option.TYPE_FLOAT, 1.0f - s.taxRate),
+			new Option(R.string.hours_per_week_name, R.string.hours_per_week_update,
+				R.string.hours_per_week_desc, Option.TYPE_INTEGER, s.hourPerWeek),
+			new Option(R.string.months_per_year_name, R.string.months_per_year_update,
+				R.string.months_per_year_desc, Option.TYPE_INTEGER, s.monthsPerYear) };
 
 		final Adapter data = new Adapter(context, opt);
 		this.setAdapter(data);

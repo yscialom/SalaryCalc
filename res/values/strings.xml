@@ -50,6 +50,9 @@ Author: Yankel Scialom (YSC) <yankel.scialom@mail.com>
 	<string name="months_per_year_desc">Number of administrative months the year is split into.</string>
 	<string name="ok">OK</string>
 	<string name="cancel">Cancel (back to %1$d)</string><!-- rate -->
+	<string name="tax_rate_update">Update tax rate\'s value</string><!-- option_name -->
+	<string name="hours_per_week_update">Update hours per week\'s number</string><!-- option_name -->
+	<string name="months_per_year_update">Update months per year\'s number</string><!-- option_name -->
 
 	<!--  About Tab -->
 	<string name="desc_title">What is %1$s?</string>

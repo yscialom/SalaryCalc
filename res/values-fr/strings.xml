@@ -46,6 +46,9 @@ Author: Yankel Scialom (YSC) <yankel.scialom@mail.com>
 	<string name="months_per_year_desc">Nomrbe de mois administratifs.</string>
 	<string name="ok">Valider</string>
 	<string name="cancel">Annuler (retour à %1$d)</string><!-- rate -->
+	<string name="tax_rate_update">Modifier les charges salariales</string>
+	<string name="hours_per_week_update">Modifier les heures/semaine</string>
+	<string name="months_per_year_update">Modifier les mois/an</string>
 
 	<!-- About Tab -->
 	<string name="desc_title">Qu\'est-ce que %1$s ?</string>
