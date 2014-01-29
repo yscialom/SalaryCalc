@@ -69,20 +69,7 @@ Author: Yankel Scialom (YSC) <yankel.scialom@mail.com>
 
 	<!-- External Credits -->
 	<string name="external_credits_title">Remerciements particuliers à</string>
-	<string-array name="external_credits_list">
-		<item><![CDATA[
-			<a href="http://actionbarsherlock.com">ActionBarSherlock 4.4.0</a>
-		]]></item>
-		<item><![CDATA[
-			<a href="https://github.com/michaelnovakjr/numberpicker">NumberPicker</a>
-		]]></item>
-	</string-array>
 
 	<!-- Internal Credits -->
 	<string name="internal_credits_title">Développeurs</string>
-	<string-array name="internal_credits_list">
-		<item><![CDATA[
-			Yankel Scialom (YSC) <yankel.scialom@mail.com>
-		]]></item>
-	</string-array>
 </resources>
